@@ -1,0 +1,28 @@
+<H1>Inventory Item</H1>
+
+<div class = "container">
+  <div class="alert alert-warning" *ngIf="itemForm.dirty && itemForm.invalid">Please Enter Valid Characters</div>
+  <div class="alert alert-warning" *ngIf="itemForm.dirty && description.invalid">Please Enter Valid Description</div>
+  <div class="alert alert-warning" *ngIf="itemForm.dirty && quantity.invalid">Please Enter Valid Quantity</div>
+  <form #itemForm="ngForm">
+    <fieldset class = "form-group">
+        <label>Description</label>
+      <input type = "text" #description = "ngModel"
+       [(ngModel)] = "item.description" class = "form-control" name = "description" required = "required" minlength="5">
+    </fieldset>
+    <fieldset class = "form-group">
+        <label>Quantity</label>
+      <input type = "number" #quantity = "ngModel"
+       [(ngModel)] = "item.quantity" class = "form-control" name = "quantity" required = "required">
+    </fieldset>
+    <fieldset class = "form-group">
+      <label>Date Added</label>
+      <input type = "date" #dateAdded = "ngModel" 
+      [ngModel] = "item.dateAdded | date:'yyyy-dd-MM'"
+      (ngModelChange)="item.dateAdded = $event" 
+      class = "form-control" name = "dateAdded" required = "required">
+    </fieldset>
+
+    <button type = "submit" (click)="saveItem()" class = "btn btn-success">Save Changes</button>
+  </form>
+</div>

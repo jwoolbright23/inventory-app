@@ -1,0 +1,32 @@
+<h1>Inventory</h1>
+
+<div class = "alert alert-success" *ngIf="message">{{message}}</div>
+<div class="container">
+<table class="table table-hover table-bordered table-dark">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <!-- <th>Location</th> -->
+      <th>Quantity</th>
+      <th>Date Added</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{item.description}}</td>
+      <!-- <td>{{item.location}}</td> -->
+      <td>{{item.quantity}}</td>
+      <td>{{item.dateAdded | date}}</td>
+      <td><button (click)="updateItem(item.id)" class="btn btn-success">Update</button></td>
+      <td><button (click)="deleteItem(item.id)" class="btn btn-warning">Delete</button></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<div clas = "row">
+    <button (click)="addItem()" class="btn btn-success">Add New Item</button>
+</div>
+</div>
