@@ -20,19 +20,19 @@ public class InventoryJpaController {
     private InventoryJpaRepository inventoryJpaRepository;
 
 
-    @GetMapping("/jpa/users/{username}/items")
+    @GetMapping("/h2/users/{username}/items")
     public List<Item> getAllItems(@PathVariable String username){
         return inventoryJpaRepository.findByUsername(username);
         //return ItemService.findAll();
     }
 
-    @GetMapping("/jpa/users/{username}/items/{id}")
+    @GetMapping("/h2/users/{username}/items/{id}")
     public Item getItem(@PathVariable String username, @PathVariable long id){
         return inventoryJpaRepository.findById(id).get();
         //return ItemService.findById(id);
     }
 
-    @DeleteMapping("/jpa/users/{username}/items/{id}")
+    @DeleteMapping("/h2/users/{username}/items/{id}")
     public ResponseEntity<Void> deleteItem(
             @PathVariable String username, @PathVariable long id){
 
@@ -46,7 +46,7 @@ public class InventoryJpaController {
 //        return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/jpa/users/{username}/items/{id}")
+    @PutMapping("/h2/users/{username}/items/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable String username,
                                            @PathVariable long id, @RequestBody Item item){
 
@@ -55,7 +55,7 @@ public class InventoryJpaController {
         return new ResponseEntity<Item>(item, HttpStatus.OK);
     }
 
-    @PostMapping("/jpa/users/{username}/items")
+    @PostMapping("/h2/users/{username}/items")
     public ResponseEntity<Void> createdItem(@PathVariable String username, @RequestBody Item item){
 
         item.setUsername(username);

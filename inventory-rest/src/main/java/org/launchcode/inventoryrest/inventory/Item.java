@@ -4,7 +4,7 @@ package org.launchcode.inventoryrest.inventory;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -17,13 +17,13 @@ public class Item {
     private String username;
     private String description;
     private String quantity;
-    private Date dateAdded;
+    private LocalDate dateAdded;
 
     protected Item(){
 
     }
 
-    public Item(Long id, String username, String description, String quantity, Date dateAdded) {
+    public Item(Long id, String username, String description, String quantity, LocalDate dateAdded) {
         super();
         this.id = id;
         this.username = username;
@@ -64,9 +64,9 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public Date getDateAdded() { return dateAdded; }
+    public LocalDate getDateAdded() { return dateAdded; }
 
-    public void setDateAdded(Date dateAdded) {
+    public void setDateAdded(LocalDate dateAdded) {
         this.dateAdded = dateAdded;
     }
 

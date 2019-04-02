@@ -14,11 +14,11 @@ public class InventoryService {
     private static List<Item> items = new ArrayList<>();
     private static long idCounter = 0;
 
-    static {
-        items.add(new Item(++idCounter, "johndw","Cheese","5", new Date()));
-        items.add(new Item(++idCounter, "johndw","Bacon","6", new Date()));
-        items.add(new Item(++idCounter, "johndw","Coffee","7", new Date()));
-    }
+//    static {
+//        items.add(new Item(++idCounter, "johndw","Cheese","5", new Date()));
+//        items.add(new Item(++idCounter, "johndw","Bacon","6", new Date()));
+//        items.add(new Item(++idCounter, "johndw","Coffee","7", new Date()));
+//    }
 
     public List<Item> findAll() {
         return items;
