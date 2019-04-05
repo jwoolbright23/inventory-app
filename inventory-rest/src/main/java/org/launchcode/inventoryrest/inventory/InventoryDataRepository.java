@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface InventoryJpaRepository extends JpaRepository<Item, Long> {
+public interface InventoryDataRepository extends JpaRepository<Item, Long> {
 
     List<Item> findByUsername(String username);
 }

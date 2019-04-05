@@ -11,24 +11,24 @@ import java.util.List;
 
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
-public class InventoryJpaController {
+public class InventoryDataController {
 
     @Autowired
     private InventoryService ItemService;
 
     @Autowired
-    private InventoryJpaRepository inventoryJpaRepository;
+    private InventoryDataRepository inventoryDataRepository;
 
 
     @GetMapping("/h2/users/{username}/items")
     public List<Item> getAllItems(@PathVariable String username){
-        return inventoryJpaRepository.findByUsername(username);
+        return inventoryDataRepository.findByUsername(username);
         //return ItemService.findAll();
     }
 
     @GetMapping("/h2/users/{username}/items/{id}")
     public Item getItem(@PathVariable String username, @PathVariable long id){
-        return inventoryJpaRepository.findById(id).get();
+        return inventoryDataRepository.findById(id).get();
         //return ItemService.findById(id);
     }
 
@@ -37,7 +37,7 @@ public class InventoryJpaController {
             @PathVariable String username, @PathVariable long id){
 
 //        Item item = ItemService.deleteById(id);
-        inventoryJpaRepository.deleteById(id);
+        inventoryDataRepository.deleteById(id);
 
 //        if(item!=null) {
             return ResponseEntity.noContent().build();
@@ -50,7 +50,7 @@ public class InventoryJpaController {
     public ResponseEntity<Item> updateItem(@PathVariable String username,
                                            @PathVariable long id, @RequestBody Item item){
 
-        Item itemUpdated = inventoryJpaRepository.save(item);
+        Item itemUpdated = inventoryDataRepository.save(item);
 
         return new ResponseEntity<Item>(item, HttpStatus.OK);
     }
@@ -59,7 +59,7 @@ public class InventoryJpaController {
     public ResponseEntity<Void> createdItem(@PathVariable String username, @RequestBody Item item){
 
         item.setUsername(username);
-        Item createdItem = inventoryJpaRepository.save(item);
+        Item createdItem = inventoryDataRepository.save(item);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(createdItem.getId()).toUri();
